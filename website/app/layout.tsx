@@ -42,7 +42,7 @@ function Header() {
       <header className="header">
         <div className="header-inner">
           <a href="/" className="header-logo">
-            <div className="header-logo-icon">🌿</div>
+            <img src="/logo.png" alt="CREC-MA" className="header-logo-img" />
             <div className="header-logo-text">
               <div className="header-logo-sigla">CREC-MA</div>
               <div className="header-logo-nome">Educação do Campo</div>

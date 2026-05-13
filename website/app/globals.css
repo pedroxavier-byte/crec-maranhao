@@ -25,6 +25,7 @@ img { max-width: 100%; display: block; }
 .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .header-logo { display: flex; align-items: center; gap: 12px; }
 .header-logo-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid rgba(255,255,255,0.3); }
+.header-logo-img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.3); }
 .header-logo-text { color: white; }
 .header-logo-sigla { font-size: 18px; font-weight: 900; letter-spacing: 1px; }
 .header-logo-nome { font-size: 11px; opacity: 0.8; line-height: 1.2; }
