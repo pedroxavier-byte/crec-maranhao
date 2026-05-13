@@ -31,7 +31,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="hero-emblema">🌿</div>
+            <div className="hero-emblema"><img src="/logo.png" alt="CREC-MA" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} /></div>
           </div>
         </div>
       </section>
