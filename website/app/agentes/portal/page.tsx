@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { supabase, AgenteTerritorial, PesquisaEscola, AcaoSecretaria } from '../../lib/supabase';
+import { supabase, AgenteTerritorial, PesquisaEscola, AcaoSecretaria } from '@/lib/supabase';
 
 export default function PortalAgentePage() {
   const [agente, setAgente] = useState<AgenteTerritorial | null>(null);

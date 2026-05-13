@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { supabase, AgenteTerritorial, PesquisaEscola, AcaoSecretaria } from '../../lib/supabase';
+import { supabase, AgenteTerritorial, PesquisaEscola, AcaoSecretaria } from '@/lib/supabase';
 
 const ADMIN_EMAIL = 'admin@crecma.edu.br';
 
