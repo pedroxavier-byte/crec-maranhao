@@ -80,12 +80,31 @@ export default function CadastroAgentePage() {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: form.email,
         password: form.senha,
+        options: {
+          data: { nome: form.nome },
+        },
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        if (authError.message?.toLowerCase().includes('rate limit') || authError.message?.toLowerCase().includes('email')) {
+          setErro('Limite de cadastros atingido. Por favor, tente novamente em alguns minutos ou entre em contato com o CREC-MA.');
+        } else if (authError.message?.toLowerCase().includes('already registered') || authError.message?.toLowerCase().includes('already been registered')) {
+          setErro('Este e-mail já está cadastrado. Tente fazer login.');
+        } else {
+          setErro(authError.message || 'Erro ao criar conta. Tente novamente.');
+        }
+        setStatus('error');
+        return;
+      }
+
+      if (!authData.user) {
+        setErro('Erro ao criar conta. Verifique seu e-mail e tente novamente.');
+        setStatus('error');
+        return;
+      }
 
       const { error: dbError } = await supabase.from('agentes_territoriais').insert({
-        user_id: authData.user?.id,
+        user_id: authData.user.id,
         nome: form.nome,
         cpf: form.cpf.replace(/\D/g, ''),
         email: form.email,
@@ -95,10 +114,19 @@ export default function CadastroAgentePage() {
         status: 'pendente',
       });
 
-      if (dbError) throw dbError;
+      if (dbError) {
+        if (dbError.message?.includes('duplicate') || dbError.code === '23505') {
+          setErro('Este CPF ou e-mail já está cadastrado no sistema.');
+        } else {
+          setErro(dbError.message || 'Erro ao salvar dados. Tente novamente.');
+        }
+        setStatus('error');
+        return;
+      }
+
       setStatus('success');
     } catch (err: any) {
-      setErro(err.message || 'Erro ao realizar cadastro. Tente novamente.');
+      setErro(err?.message || 'Erro ao realizar cadastro. Verifique sua conexão e tente novamente.');
       setStatus('error');
     }
   };
