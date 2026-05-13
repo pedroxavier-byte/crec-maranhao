@@ -36,6 +36,7 @@ function Header() {
     { href: '/noticias', label: 'Notícias' },
     { href: '/fopec', label: 'FOPEC-MA' },
     { href: '/pronacampo', label: 'PRONACAMPO' },
+    { href: '/conec', label: 'CONEC' },
     { href: '/legislacao', label: 'Legislação' },
   ];
   return (
