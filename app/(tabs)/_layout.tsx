@@ -20,6 +20,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="legislacao/index" options={{ title: 'Legislação', tabBarIcon: ({ color, size }) => <TabIcon name="gavel" color={color} size={size} /> }} />
       <Tabs.Screen name="busca/index" options={{ title: 'Buscar', tabBarIcon: ({ color, size }) => <TabIcon name="magnify" color={color} size={size} /> }} />
       <Tabs.Screen name="fopec/index" options={{ title: 'FOPEC-MA', tabBarIcon: ({ color, size }) => <TabIcon name="leaf" color={color} size={size} /> }} />
+      <Tabs.Screen name="pronacampo/index" options={{ title: 'PRONACAMPO', tabBarIcon: ({ color, size }) => <TabIcon name="sprout" color={color} size={size} /> }} />
       <Tabs.Screen name="admin/index" options={{ title: 'Admin', tabBarIcon: ({ color, size }) => <TabIcon name="shield-crown-outline" color={color} size={size} /> }} />
       <Tabs.Screen name="escolas/[id]" options={{ href: null }} />
       <Tabs.Screen name="escolas/nova" options={{ href: null }} />

@@ -35,6 +35,7 @@ function Header() {
     { href: '/biblioteca', label: 'Biblioteca' },
     { href: '/noticias', label: 'Notícias' },
     { href: '/fopec', label: 'FOPEC-MA' },
+    { href: '/pronacampo', label: 'PRONACAMPO' },
     { href: '/legislacao', label: 'Legislação' },
   ];
   return (
