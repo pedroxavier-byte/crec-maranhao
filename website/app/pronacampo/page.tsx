@@ -49,7 +49,11 @@ export default function PronacampoPage() {
       {/* HERO */}
       <div style={{ background: 'linear-gradient(135deg, #1B5E20 0%, #2E7D32 60%, #388E3C 100%)', padding: '60px 24px', textAlign: 'center', color: 'white' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
-          <div style={{ fontSize: 56, marginBottom: 16 }}>🌱</div>
+          <img
+            src="https://www.gov.br/mec/pt-br/novo-pronacampo/novo-pronacampo/@@govbr.institucional.banner/b8ad8983-fbb0-4275-b53b-851f7441e9cf/@@images/a31d7c72-5002-40f0-b60a-0513bbe5cb3f.webp"
+            alt="Logo Novo PRONACAMPO"
+            style={{ maxWidth: 320, width: '100%', borderRadius: 16, marginBottom: 20, boxShadow: '0 4px 24px rgba(0,0,0,0.3)' }}
+          />
           <h1 style={{ fontSize: 32, fontWeight: 900, marginBottom: 12, lineHeight: 1.2 }}>
             Novo PRONACAMPO
           </h1>

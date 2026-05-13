@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNoticiasStore } from '../../../store/useNoticiasStore';
 
@@ -84,9 +84,11 @@ export default function PronacampoScreen() {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* HEADER */}
       <View style={styles.header}>
-        <View style={styles.headerIcone}>
-          <MaterialCommunityIcons name="sprout" size={36} color="white" />
-        </View>
+        <Image
+          source={{ uri: 'https://www.gov.br/mec/pt-br/novo-pronacampo/novo-pronacampo/@@govbr.institucional.banner/b8ad8983-fbb0-4275-b53b-851f7441e9cf/@@images/a31d7c72-5002-40f0-b60a-0513bbe5cb3f.webp' }}
+          style={styles.headerImagem}
+          resizeMode="contain"
+        />
         <Text style={styles.headerTitulo}>Novo PRONACAMPO</Text>
         <Text style={styles.headerSub}>
           Política Nacional de Educação do Campo, das Águas e das Florestas
@@ -253,6 +255,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
   header: { backgroundColor: COR, padding: 24, paddingTop: 48, alignItems: 'center' },
   headerIcone: { width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(255,255,255,0.2)', alignItems: 'center', justifyContent: 'center', marginBottom: 12, borderWidth: 2, borderColor: 'rgba(255,255,255,0.4)' },
+  headerImagem: { width: 280, height: 140, marginBottom: 16, borderRadius: 12 },
   headerTitulo: { fontSize: 22, fontWeight: '900', color: 'white', textAlign: 'center' },
   headerSub: { fontSize: 13, color: 'rgba(255,255,255,0.85)', textAlign: 'center', marginTop: 6, lineHeight: 18 },
   headerBadge: { marginTop: 12, backgroundColor: 'rgba(255,255,255,0.2)', paddingHorizontal: 14, paddingVertical: 6, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.4)' },
