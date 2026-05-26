@@ -16,6 +16,11 @@ export default function AgentesPage() {
               📝 Solicitar Cadastro
             </a>
           </div>
+          <div style={{ marginTop: 24 }}>
+            <a href="/agentes/territoriais" style={{ color: 'rgba(255,255,255,0.9)', fontSize: 14, fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: 4 }}>
+              👥 Conheça os Agentes Territoriais →
+            </a>
+          </div>
         </div>
       </div>
 
