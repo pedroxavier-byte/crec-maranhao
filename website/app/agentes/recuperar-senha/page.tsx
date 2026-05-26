@@ -13,7 +13,7 @@ export default function RecuperarSenhaPage() {
     setErro('');
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/agentes/nova-senha`,
+      redirectTo: 'https://crec-maranhao.vercel.app/agentes/nova-senha',
     });
 
     if (error) {
