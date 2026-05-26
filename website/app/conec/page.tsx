@@ -44,9 +44,9 @@ export default function ConecPage() {
       <div style={{ background: 'linear-gradient(135deg, #01579B 0%, #0277BD 60%, #0288D1 100%)', padding: '60px 24px', textAlign: 'center', color: 'white' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <div style={{ fontSize: 56, marginBottom: 16 }}>🤝</div>
-          <h1 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, lineHeight: 1.2 }}>CONEC</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, lineHeight: 1.2 }}>Comitê-MA</h1>
           <p style={{ fontSize: 18, opacity: 0.9, marginBottom: 16 }}>
-            Comitê Executivo Estadual de Educação do Campo do Maranhão
+            Comitê Executivo Estadual de Educação do Campo do Maranhão (CONEC)
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
             <div style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', borderRadius: 20, padding: '6px 16px', fontSize: 13, fontWeight: 700 }}>

@@ -59,8 +59,8 @@ export default function ConecScreen() {
         <View style={styles.headerIcone}>
           <MaterialCommunityIcons name="hand-heart-outline" size={36} color="white" />
         </View>
-        <Text style={styles.headerTitulo}>CONEC</Text>
-        <Text style={styles.headerNome}>Comitê Executivo Estadual de{'\n'}Educação do Campo do Maranhão</Text>
+        <Text style={styles.headerTitulo}>Comitê-MA</Text>
+        <Text style={styles.headerNome}>Comitê Executivo Estadual de{'\n'}Educação do Campo do Maranhão (CONEC)</Text>
         <View style={styles.headerBadge}>
           <Text style={styles.headerBadgeTexto}>Reativado em Janeiro de 2024</Text>
         </View>
