@@ -15,10 +15,8 @@ export default function AgentesPage() {
             <a href="/agentes/cadastro" style={{ background: 'rgba(255,255,255,0.2)', border: '2px solid rgba(255,255,255,0.5)', color: 'white', fontWeight: 800, padding: '14px 32px', borderRadius: 10, fontSize: 16, textDecoration: 'none' }}>
               📝 Solicitar Cadastro
             </a>
-          </div>
-          <div style={{ marginTop: 24 }}>
-            <a href="/agentes/territoriais" style={{ color: 'rgba(255,255,255,0.9)', fontSize: 14, fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: 4 }}>
-              👥 Conheça os Agentes Territoriais →
+            <a href="/agentes/territoriais" style={{ background: 'rgba(255,255,255,0.2)', border: '2px solid rgba(255,255,255,0.5)', color: 'white', fontWeight: 800, padding: '14px 32px', borderRadius: 10, fontSize: 16, textDecoration: 'none' }}>
+              👥 Conheça os Agentes Territoriais
             </a>
           </div>
         </div>
