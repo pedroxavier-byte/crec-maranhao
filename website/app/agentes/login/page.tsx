@@ -79,6 +79,9 @@ export default function LoginAgentePage() {
           </form>
 
           <div style={{ textAlign: 'center', marginTop: 20, paddingTop: 20, borderTop: '1px solid #E0E0E0' }}>
+            <p style={{ fontSize: 13, color: 'var(--texto-claro)', marginBottom: 8 }}>
+              <a href="/agentes/recuperar-senha" style={{ color: '#E65100', fontWeight: 700 }}>🔑 Esqueceu sua senha?</a>
+            </p>
             <p style={{ fontSize: 13, color: 'var(--texto-claro)' }}>
               Ainda não tem cadastro?{' '}
               <a href="/agentes/cadastro" style={{ color: 'var(--verde)', fontWeight: 700 }}>Solicitar cadastro</a>
