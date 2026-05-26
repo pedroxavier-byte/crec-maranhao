@@ -36,7 +36,7 @@ function Header() {
     { href: '/noticias', label: 'Notícias' },
     { href: '/fopec', label: 'FOPEC-MA' },
     { href: '/pronacampo', label: 'PRONACAMPO' },
-    { href: '/conec', label: 'CONEC' },
+    { href: '/conec', label: 'Comitê-MA' },
     { href: '/legislacao', label: 'Legislação' },
     { href: '/censo-escolar', label: '📊 Censo Escolar' },
     { href: '/agentes', label: '🗺️ Agentes' },
