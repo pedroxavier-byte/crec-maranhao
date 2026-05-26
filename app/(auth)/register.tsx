@@ -1,6 +1,52 @@
 import { useState } from 'react';
-import { ScrollView, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, TextInput, Button, Chip, HelperText } from 'react-native-paper';
+import { ScrollView, View, StyleSheet, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { Text, TextInput, Button, Chip, HelperText, Searchbar } from 'react-native-paper';
+
+const MUNICIPIOS_MA = [
+  'Açailândia', 'Afonso Cunha', 'Água Doce do Maranhão', 'Alcântara', 'Aldeias Altas',
+  'Altamira do Maranhão', 'Alto Alegre do Maranhão', 'Alto Alegre do Pindaré', 'Alto Parnaíba',
+  'Amapá do Maranhão', 'Amarante do Maranhão', 'Anajatuba', 'Anapurus', 'Apicum-Açu',
+  'Araguanã', 'Araioses', 'Arame', 'Arari', 'Axixá', 'Bacabal', 'Bacabeira', 'Bacuri',
+  'Bacurituba', 'Balsas', 'Barão de Grajaú', 'Barra do Corda', 'Barreirinhas', 'Bela Vista do Maranhão',
+  'Belágua', 'Benedito Leite', 'Bequimão', 'Bernardo do Mearim', 'Boa Vista do Gurupi',
+  'Bom Jardim', 'Bom Jesus das Selvas', 'Bom Lugar', 'Brejo', 'Brejo de Areia', 'Buriti',
+  'Buriti Bravo', 'Buriticupu', 'Buritirana', 'Cachoeira Grande', 'Cajapió', 'Cajari',
+  'Campestre do Maranhão', 'Cândido Mendes', 'Cantanhede', 'Capinzal do Norte', 'Carolina',
+  'Carutapera', 'Caxias', 'Cedral', 'Central do Maranhão', 'Centro do Guilherme',
+  'Centro Novo do Maranhão', 'Chapadinha', 'Cidelândia', 'Codó', 'Coelho Neto', 'Colinas',
+  'Conceição do Lago-Açu', 'Coroatá', 'Cururupu', 'Davinópolis', 'Dom Pedro', 'Duque Bacelar',
+  'Esperantinópolis', 'Estreito', 'Feira Nova do Maranhão', 'Fernando Falcão', 'Formosa da Serra Negra',
+  'Fortaleza dos Nogueiras', 'Fortuna', 'Godofredo Viana', 'Gonçalves Dias', 'Governador Archer',
+  'Governador Edison Lobão', 'Governador Eugênio Barros', 'Governador Luís Rocha', 'Governador Newton Bello',
+  'Governador Nunes Freire', 'Governador Ribamar Fiquene', 'Graça Aranha', 'Grajaú', 'Guimarães',
+  'Humberto de Campos', 'Icatu', 'Igarapé do Meio', 'Igarapé Grande', 'Imperatriz',
+  'Itaipava do Grajaú', 'Itapecuru Mirim', 'Itinga do Maranhão', 'Jatobá', 'Jenipapo dos Vieiras',
+  'João Lisboa', 'Joselândia', 'Junco do Maranhão', 'Lago da Pedra', 'Lago do Junco',
+  'Lago dos Rodrigues', 'Lago Verde', 'Lagoa do Mato', 'Lagoa Grande do Maranhão', 'Lajeado Novo',
+  'Lima Campos', 'Loreto', 'Luís Domingues', 'Magalhães de Almeida', 'Maracaçumé', 'Marajá do Sena',
+  'Maranhãozinho', 'Mata Roma', 'Matinha', 'Matões', 'Matões do Norte', 'Milagres do Maranhão',
+  'Mirador', 'Miranda do Norte', 'Mirinzal', 'Monção', 'Montes Altos', 'Morros',
+  'Nina Rodrigues', 'Nova Colinas', 'Nova Iorque', 'Nova Olinda do Maranhão', "Olho d'Água das Cunhãs",
+  'Olinda Nova do Maranhão', 'Paço do Lumiar', 'Palmeirândia', 'Paraibano', 'Parnarama',
+  'Passagem Franca', 'Pastos Bons', 'Paulino Neves', 'Paulo Ramos', 'Pedreiras', 'Pedro do Rosário',
+  'Penalva', 'Peri Mirim', 'Peritoró', 'Pindaré-Mirim', 'Pinheiro', 'Pio XII', 'Pirapemas',
+  'Poção de Pedras', 'Porto Franco', 'Porto Rico do Maranhão', 'Presidente Dutra', 'Presidente Juscelino',
+  'Presidente Médici', 'Presidente Sarney', 'Presidente Vargas', 'Primeira Cruz', 'Raposa',
+  'Riachão', 'Rosário', 'Sambaíba', 'Santa Filomena do Maranhão', 'Santa Helena', 'Santa Inês',
+  'Santa Luzia', 'Santa Luzia do Paruá', 'Santa Quitéria do Maranhão', 'Santa Rita',
+  'Santana do Maranhão', 'Santo Amaro do Maranhão', 'Santo Antônio dos Lopes',
+  'São Benedito do Rio Preto', 'São Bento', 'São Bernardo', 'São Domingos do Azeitão',
+  'São Domingos do Maranhão', 'São Félix de Balsas', 'São Francisco do Brejão',
+  'São Francisco do Maranhão', 'São João Batista', 'São João do Carú', 'São João do Paraíso',
+  'São João do Sóter', 'São João dos Patos', 'São José de Ribamar', 'São José dos Basílios',
+  'São Luís', 'São Luís Gonzaga do Maranhão', 'São Mateus do Maranhão', 'São Pedro da Água Branca',
+  'São Pedro dos Crentes', 'São Raimundo das Mangabeiras', 'São Raimundo do Doca Bezerra',
+  'São Roberto', 'São Vicente Ferrer', 'Satubinha', 'Senador Alexandre Costa', 'Senador La Rocque',
+  'Serrano do Maranhão', 'Sucupira do Norte', 'Sucupira do Riachão', 'Tasso Fragoso',
+  'Timbiras', 'Timon', 'Trizidela do Vale', 'Tufilândia', 'Tuntum', 'Turiaçu', 'Turilândia',
+  'Tutóia', 'Urbano Santos', 'Vargem Grande', 'Viana', 'Vila Nova dos Martírios', 'Vitória do Mearim',
+  'Vitorino Freire', 'Zé Doca',
+];
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -40,6 +86,14 @@ export default function RegisterScreen() {
   const [observacao, setObservacao] = useState('');
   const [erro, setErro] = useState('');
   const [resultado, setResultado] = useState<{ ok: boolean; mensagem: string; pendente?: boolean } | null>(null);
+  const [modalMunicipio, setModalMunicipio] = useState(false);
+  const [buscaMunicipio, setBuscaMunicipio] = useState('');
+
+  const municipiosFiltrados = MUNICIPIOS_MA.filter(m =>
+    m.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(
+      buscaMunicipio.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    )
+  );
 
   const roleAtual = ROLES.find((r) => r.value === role);
   const isRestrito = role ? ROLES_RESTRITAS.includes(role) : false;
@@ -179,7 +233,54 @@ export default function RegisterScreen() {
             <TextInput label="E-mail *" value={email} onChangeText={setEmail} mode="outlined" keyboardType="email-address" autoCapitalize="none" style={styles.input} outlineColor={Colors.border} activeOutlineColor={Colors.primary} />
             <TextInput label="Senha * (mínimo 6 caracteres)" value={senha} onChangeText={setSenha} mode="outlined" secureTextEntry style={styles.input} outlineColor={Colors.border} activeOutlineColor={Colors.primary} />
             <TextInput label="Confirmar senha *" value={confirmarSenha} onChangeText={setConfirmarSenha} mode="outlined" secureTextEntry style={styles.input} outlineColor={Colors.border} activeOutlineColor={Colors.primary} />
-            <TextInput label="Município *" value={municipio} onChangeText={setMunicipio} mode="outlined" style={styles.input} outlineColor={Colors.border} activeOutlineColor={Colors.primary} />
+            <TouchableOpacity onPress={() => { setBuscaMunicipio(''); setModalMunicipio(true); }} activeOpacity={0.7}>
+              <View pointerEvents="none">
+                <TextInput
+                  label="Município *"
+                  value={municipio}
+                  mode="outlined"
+                  style={styles.input}
+                  outlineColor={Colors.border}
+                  activeOutlineColor={Colors.primary}
+                  editable={false}
+                  right={<TextInput.Icon icon="chevron-down" />}
+                  placeholder="Toque para selecionar"
+                />
+              </View>
+            </TouchableOpacity>
+            <Modal visible={modalMunicipio} animationType="slide" onRequestClose={() => setModalMunicipio(false)}>
+              <View style={{ flex: 1, backgroundColor: Colors.background }}>
+                <View style={{ backgroundColor: Colors.primary, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                  <TouchableOpacity onPress={() => setModalMunicipio(false)}>
+                    <MaterialCommunityIcons name="arrow-left" size={24} color="#fff" />
+                  </TouchableOpacity>
+                  <Text style={{ color: '#fff', fontSize: 17, fontWeight: '700', flex: 1 }}>Selecione o Município</Text>
+                </View>
+                <View style={{ padding: 12 }}>
+                  <Searchbar
+                    placeholder="Buscar município..."
+                    value={buscaMunicipio}
+                    onChangeText={setBuscaMunicipio}
+                    style={{ borderRadius: 8 }}
+                  />
+                </View>
+                <FlatList
+                  data={municipiosFiltrados}
+                  keyExtractor={item => item}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity
+                      onPress={() => { setMunicipio(item); setModalMunicipio(false); }}
+                      style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: Colors.border, backgroundColor: municipio === item ? Colors.primary + '10' : undefined }}
+                    >
+                      <Text style={{ fontSize: 15, color: municipio === item ? Colors.primary : Colors.text, fontWeight: municipio === item ? '700' : '400' }}>
+                        {item}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                  keyboardShouldPersistTaps="handled"
+                />
+              </View>
+            </Modal>
             <TextInput label="Telefone / WhatsApp" value={telefone} onChangeText={setTelefone} mode="outlined" keyboardType="phone-pad" style={styles.input} outlineColor={Colors.border} activeOutlineColor={Colors.primary} />
             {erro ? <HelperText type="error">{erro}</HelperText> : null}
             <Button mode="contained" onPress={handleStep2} style={styles.botao} buttonColor={Colors.primary}>Continuar</Button>
