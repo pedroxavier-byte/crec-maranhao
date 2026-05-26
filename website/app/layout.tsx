@@ -38,6 +38,7 @@ function Header() {
     { href: '/pronacampo', label: 'PRONACAMPO' },
     { href: '/conec', label: 'CONEC' },
     { href: '/legislacao', label: 'Legislação' },
+    { href: '/censo-escolar', label: '📊 Censo Escolar' },
     { href: '/agentes', label: '🗺️ Agentes' },
   ];
   return (

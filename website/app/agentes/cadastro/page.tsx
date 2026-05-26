@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
 
 const MUNICIPIOS_MA = [
   'Açailândia', 'Afonso Cunha', 'Água Doce do Maranhão', 'Alcântara', 'Aldeias Altas',
@@ -77,49 +76,24 @@ export default function CadastroAgentePage() {
     }
 
     try {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: form.email,
-        password: form.senha,
-        options: {
-          data: { nome: form.nome },
-        },
+      const response = await fetch('/api/cadastro-agente', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: form.nome,
+          cpf: form.cpf,
+          email: form.email,
+          senha: form.senha,
+          telefone: form.telefone,
+          municipios: form.municipios,
+          organizacao: form.organizacao,
+        }),
       });
 
-      if (authError) {
-        if (authError.message?.toLowerCase().includes('rate limit') || authError.message?.toLowerCase().includes('email')) {
-          setErro('Limite de cadastros atingido. Por favor, tente novamente em alguns minutos ou entre em contato com o CREC-MA.');
-        } else if (authError.message?.toLowerCase().includes('already registered') || authError.message?.toLowerCase().includes('already been registered')) {
-          setErro('Este e-mail já está cadastrado. Tente fazer login.');
-        } else {
-          setErro(authError.message || 'Erro ao criar conta. Tente novamente.');
-        }
-        setStatus('error');
-        return;
-      }
+      const result = await response.json();
 
-      if (!authData.user) {
-        setErro('Erro ao criar conta. Verifique seu e-mail e tente novamente.');
-        setStatus('error');
-        return;
-      }
-
-      const { error: dbError } = await supabase.from('agentes_territoriais').insert({
-        user_id: authData.user.id,
-        nome: form.nome,
-        cpf: form.cpf.replace(/\D/g, ''),
-        email: form.email,
-        telefone: form.telefone,
-        municipios: form.municipios,
-        organizacao: form.organizacao,
-        status: 'pendente',
-      });
-
-      if (dbError) {
-        if (dbError.message?.includes('duplicate') || dbError.code === '23505') {
-          setErro('Este CPF ou e-mail já está cadastrado no sistema.');
-        } else {
-          setErro(dbError.message || 'Erro ao salvar dados. Tente novamente.');
-        }
+      if (!response.ok) {
+        setErro(result.error || 'Erro ao realizar cadastro. Tente novamente.');
         setStatus('error');
         return;
       }
