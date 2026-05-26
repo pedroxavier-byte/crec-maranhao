@@ -17,7 +17,13 @@ export default function RecuperarSenhaPage() {
     });
 
     if (error) {
-      setErro('Não foi possível enviar o e-mail. Verifique se o endereço está correto.');
+      if (error.message?.toLowerCase().includes('rate limit') || error.message?.toLowerCase().includes('email rate')) {
+        setErro('Limite de e-mails atingido. Aguarde alguns minutos e tente novamente.');
+      } else if (error.message?.toLowerCase().includes('redirect')) {
+        setErro('URL de redirecionamento não autorizada. Entre em contato com o administrador.');
+      } else {
+        setErro(`Erro: ${error.message}`);
+      }
       setStatus('error');
     } else {
       setStatus('success');
