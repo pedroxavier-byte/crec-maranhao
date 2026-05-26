@@ -1,19 +1,23 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
-const supabaseAdmin = createClient(
-  'https://pqpwhekpuyptpweyeymh.supabase.co',
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
-
 export async function POST(req: NextRequest) {
   try {
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!serviceKey) {
+      return NextResponse.json({ error: 'Configuração do servidor incompleta. Entre em contato com o administrador.' }, { status: 500 });
+    }
+
+    const supabaseAdmin = createClient(
+      'https://pqpwhekpuyptpweyeymh.supabase.co',
+      serviceKey,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    );
     const body = await req.json();
     const { nome, cpf, email, senha, telefone, municipios, organizacao } = body;
 
