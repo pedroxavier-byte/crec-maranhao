@@ -21,6 +21,21 @@ export default function EscolasPage() {
 
       <div className="content-area">
 
+        {/* LINK ESCOLAS MUNICIPAIS */}
+        <a href="/escolas/municipais" style={{ display: 'block', textDecoration: 'none', marginBottom: 32 }}>
+          <div className="card" style={{ padding: 24, background: 'linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div style={{ fontSize: 18, fontWeight: 900, marginBottom: 6 }}>🗂️ Escolas Municipais do Campo — Censo Escolar 2024</div>
+              <div style={{ fontSize: 14, opacity: 0.9 }}>
+                Consulte as <strong>6.472 escolas municipais do campo</strong> em atividade nos 217 municípios do Maranhão, com busca por nome, município e categoria (campo, assentamento, terra indígena, quilombola).
+              </div>
+            </div>
+            <span style={{ background: 'white', color: '#1B5E20', fontWeight: 800, padding: '12px 24px', borderRadius: 10, fontSize: 14, whiteSpace: 'nowrap' }}>
+              Acessar →
+            </span>
+          </div>
+        </a>
+
         {/* RESUMO POR TIPO */}
         <div className="grade-4" style={{ marginBottom: 40 }}>
           {porZona.map(z => (
