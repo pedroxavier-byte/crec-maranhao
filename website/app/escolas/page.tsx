@@ -1,6 +1,6 @@
 import { escolasMock } from '@data/escolas';
 
-const ZONA_LABEL: Record<string, string> = { rural: 'Rural', quilombola: 'Quilombola', assentamento: 'Assentamento', ribeirinha: 'Ribeirinha', indigena: 'Indígena', ceffa: 'CEFFA/CFR' };
+const ZONA_LABEL: Record<string, string> = { rural: 'Escola do Campo', quilombola: 'Quilombola', assentamento: 'Assentamento', ribeirinha: 'Ribeirinha', indigena: 'Indígena', ceffa: 'CEFFA/CFR' };
 const ZONA_COR: Record<string, string> = { rural: '#2E7D32', quilombola: '#4A148C', assentamento: '#E65100', ribeirinha: '#01579B', indigena: '#BF360C', ceffa: '#F57F17' };
 const ZONA_EMOJI: Record<string, string> = { rural: '🚜', quilombola: '⭐', assentamento: '🏡', ribeirinha: '🌊', indigena: '🪶', ceffa: '🌱' };
 
