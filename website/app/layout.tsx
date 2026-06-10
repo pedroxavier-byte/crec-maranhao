@@ -40,6 +40,7 @@ function Header() {
     { href: '/legislacao', label: 'Legislação' },
     { href: '/censo-escolar', label: '📊 Censo Escolar' },
     { href: '/agentes', label: '🗺️ Agentes' },
+    { href: '/pesquisadores', label: '🔬 Pesquisadores' },
   ];
   return (
     <>
