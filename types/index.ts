@@ -119,6 +119,10 @@ export interface Noticia {
   tags: string[];
   visualizacoes: number;
   destaque: boolean;
+  anexoUrl?: string;
+  anexoNome?: string;
+  linkTitulo?: string;
+  linkUrl?: string;
 }
 
 export interface IndicadorMunicipio {

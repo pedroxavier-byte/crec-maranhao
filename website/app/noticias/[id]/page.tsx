@@ -54,6 +54,32 @@ export default function NoticiaPage({ params }: { params: { id: string } }) {
           </>
         )}
 
+        {(noticia.anexoUrl || noticia.linkUrl) && (
+          <>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--borda)', margin: '24px 0' }} />
+            {noticia.anexoUrl && (
+              <a
+                href={noticia.anexoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderRadius: 10, background: cor + '10', color: cor, fontWeight: 700, fontSize: 15, textDecoration: 'none', marginBottom: noticia.linkUrl ? 12 : 0 }}
+              >
+                📎 {noticia.anexoNome || 'Edital em anexo (PDF)'}
+              </a>
+            )}
+            {noticia.linkUrl && (
+              <a
+                href={noticia.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderRadius: 10, background: cor, color: 'white', fontWeight: 700, fontSize: 15, textDecoration: 'none' }}
+              >
+                🔗 {noticia.linkTitulo || 'Link para inscrição'}
+              </a>
+            )}
+          </>
+        )}
+
         {(noticia.dataEvento || noticia.localEvento) && (
           <>
             <hr style={{ border: 'none', borderTop: '1px solid var(--borda)', margin: '24px 0' }} />
