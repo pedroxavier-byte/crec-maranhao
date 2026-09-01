@@ -80,7 +80,7 @@ function Footer() {
             Centro de Referência de Educação do Campo, das Águas e das Florestas do Maranhão.<br />
             Política Nacional de Educação do Campo, das Águas e das Florestas.
           </p>
-          <p className="footer-texto" style={{ marginTop: 14 }}>📧 crec@educacao.ma.gov.br</p>
+          <p className="footer-texto" style={{ marginTop: 14 }}>📧 credoc@ufma.br</p>
         </div>
         <div>
           <div className="footer-titulo">Navegação</div>

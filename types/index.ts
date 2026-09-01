@@ -119,8 +119,7 @@ export interface Noticia {
   tags: string[];
   visualizacoes: number;
   destaque: boolean;
-  anexoUrl?: string;
-  anexoNome?: string;
+  anexos?: { titulo: string; url: string }[];
   linkTitulo?: string;
   linkUrl?: string;
 }
